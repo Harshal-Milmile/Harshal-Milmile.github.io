@@ -1,14 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <title>Elan forum form</title>
-    <style>
-        body{
-            background: url('bg.jpg');
-            background-repeat: no-repeat;
+	<title>Elan forum form</title>
+	<style type="text/css">
+		body{
+			background: #200122;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #6f0000, #200122);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #6f0000, #200122); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+		}
+		.main{
+			position: fixed;
+			width: 500px;
+			background: transparent;
+			border: 3px solid #FFF;
+			border-radius: 10px;
+			left: 450px;
+			color: #FFF;
+		}
+        .register{
+             background-color: #4CAF50;
+             color: white;
+             text-align: center;
+             text-decoration: none;
+             display: inline-block;
+             font-size: 14px;
+             margin: 4px 2px;
+             
         }
-    </style>
-    <script type="text/javascript">
+         .clear{
+             background-color: #f44336;
+             color: white;
+             text-align: center;
+             text-decoration: none;
+             display: inline-block;
+             font-size: 14px;
+             margin: 4px 2px;
+             
+        }
+	</style>
+	    <script type="text/javascript">
         function condition()
         {
 
@@ -18,11 +49,14 @@
             var USN = document.getElementById("sid").value;
             var mobile = document.getElementById("mobno").value; 
             var password = document.getElementById("pass").value;
+            var msg = new Array();
+            var message = "";
+            var x;
             var flag=1;
 
             //validation for name
             if(name == ""){
-                msg[0]= "Please Enter your Name";
+            	msg[0]= "Please Enter your Name";
                 flag = 0;
             }
             else if(!isNaN(name)){
@@ -48,9 +82,9 @@
             
             //validation for genders
             if(gender[0].checked == false && gender[1].checked == false){
-                msg[2]="Select Your Gender";
-                flag = 0;
-            } 
+		        msg[2]="Select Your Gender";
+		        flag = 0;
+	        } 
             else{
                 msg[2]="";
             }
@@ -114,19 +148,14 @@
 
         }
 
-
     </script>
-    
+
 </head>
 <body>
-<div align="center" class="main">
-    
-    <br>
-    <br>
-    <br>
+	<div align="center" class="main">
 
-    <form method="get" action="action.html" onsubmit="return condition()">
     <h1>Registration Form For Departmental Forum Activities</h1>
+    <form method="post" action="action.html" onsubmit="return condition()">
     <table border="0" cellpadding="5" cellspacing="4" class="table">
     <tr>
         <td>Name : </td>
@@ -147,7 +176,7 @@
     </tr>
     <tr>
         <td>Mobile No. : </td>
-        <td><input type="number" name="no" id="mobno" value="+91 " placeholder="Enter Mobile Number"  size="25" /></td>
+        <td><input type="number" name="no" id="mobno" value="" placeholder="Enter Mobile Number"  size="25" /></td>
     </tr>
     <tr>
         <td>Password : </td>
@@ -155,8 +184,8 @@
     </tr>
     <br>
     <br>
-    <tr><td colspan="5" align="center"><input type="submit" value="Register" id="register"/>
-        <input type="reset" value="Clear" /></td>
+    <tr><td colspan="5" align="center"><input type="submit" class="register" value="Register" onclick="condition()" id="register"/>
+        <input type="reset" class="clear" value="Clear" /></td>
     </tr>
     <br><br><br>
     <tr>
@@ -170,10 +199,7 @@
         <h>&copy; Harshal Milmile | Department of Electrical Engineering</h>
         <p>USN No. : EE20034 | SBJITMR</p>
     </footer>
-    <br />
-    <br />
-
 </div>
-    
+ <div class="ans" id="ans"></div>
 </body>
 </html>
